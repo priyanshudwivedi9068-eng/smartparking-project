@@ -9,6 +9,7 @@ import {
   FaCreditCard,
   FaGooglePay,
   FaMobileAlt,
+  FaMoneyBillAlt,
 } from "react-icons/fa";
 
 const Payment = () => {
@@ -44,7 +45,7 @@ const Payment = () => {
       });
 
       if (res.data.success) {
-        toast.success(`✅ Paid $${bill} securely via ${paymentMethod}!`);
+        toast.success(`✅ Paid ₹${bill} securely via ${paymentMethod}!`);
         navigate("/history");
       }
     } catch (error) {
@@ -86,7 +87,7 @@ const Payment = () => {
             <span className="text-lg font-bold text-gray-300">
               Total Amount
             </span>
-            <span className="text-4xl font-black text-yellow-400">${bill}</span>
+            <span className="text-4xl font-black text-yellow-400">₹{bill}</span>
           </div>
         </div>
 
@@ -151,6 +152,46 @@ const Payment = () => {
               <div className="w-4 h-4 bg-yellow-400 rounded-full border-2 border-white shadow"></div>
             )}
           </div>
+
+          <div
+            onClick={() => setPaymentMethod("Paytm")}
+            className={`p-4 rounded-xl border-2 flex items-center justify-between cursor-pointer transition-all ${paymentMethod === "Paytm" ? "border-yellow-400 bg-yellow-50" : "border-gray-100 hover:border-gray-300"}`}
+          >
+            <div className="flex items-center gap-3">
+              <FaMobileAlt
+                size={24}
+                className={
+                  paymentMethod === "Paytm"
+                    ? "text-blue-500"
+                    : "text-gray-500"
+                }
+              />
+              <span className="font-bold text-gray-800">Paytm</span>
+            </div>
+            {paymentMethod === "Paytm" && (
+              <div className="w-4 h-4 bg-yellow-400 rounded-full border-2 border-white shadow"></div>
+            )}
+          </div>
+
+          <div
+            onClick={() => setPaymentMethod("Cash")}
+            className={`p-4 rounded-xl border-2 flex items-center justify-between cursor-pointer transition-all ${paymentMethod === "Cash" ? "border-yellow-400 bg-yellow-50" : "border-gray-100 hover:border-gray-300"}`}
+          >
+            <div className="flex items-center gap-3">
+              <FaMoneyBillAlt
+                size={24}
+                className={
+                  paymentMethod === "Cash"
+                    ? "text-green-600"
+                    : "text-gray-500"
+                }
+              />
+              <span className="font-bold text-gray-800">Cash</span>
+            </div>
+            {paymentMethod === "Cash" && (
+              <div className="w-4 h-4 bg-yellow-400 rounded-full border-2 border-white shadow"></div>
+            )}
+          </div>
         </div>
 
         <button
@@ -163,7 +204,7 @@ const Payment = () => {
               Processing <FaSpinner className="animate-spin" />
             </>
           ) : (
-            <>Pay ${bill} securely</>
+            <>Pay ₹{bill} securely</>
           )}
         </button>
       </div>

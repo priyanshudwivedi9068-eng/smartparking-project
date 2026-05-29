@@ -173,7 +173,7 @@ const History = () => {
                       Total Paid
                     </span>
                     <span className="text-2xl font-black text-green-600 flex items-center gap-1 justify-end">
-                      <FaMoneyBillWave size={16} className="text-green-500" />$
+                      <FaMoneyBillWave size={16} className="text-green-500" />₹
                       {record.totalAmount || 0}
                     </span>
                   </div>

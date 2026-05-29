@@ -82,7 +82,7 @@ const endBooking = async (req, res) => {
     const diffInMs = exitTime - booking.entryTime;
     const totalMinutes = Math.floor(diffInMs / (1000 * 60));
     const billableHours = Math.max(1, Math.ceil(totalMinutes / 60));
-    const rate = slot.isPremium ? 25 : 10;
+    const rate = slot.isPremium ? 100 : 50;
     const totalAmount = billableHours * rate;
 
     booking.status = "Completed";
