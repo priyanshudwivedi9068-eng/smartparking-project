@@ -1,7 +1,12 @@
 import React from "react";
 import { FaCheck } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const Pricing = () => {
+  const handlePayment = (planName) => {
+    toast.success(`✅ Successfully subscribed to ${planName} via Online Payment!`);
+  };
+
   return (
     <div className="max-w-6xl mx-auto py-20 px-6">
       <div className="text-center mb-16">
@@ -19,7 +24,7 @@ const Pricing = () => {
         <div className="bg-white p-8 rounded-xl shadow-lg border border-gray-200 hover:border-yellow-400 transition transform hover:-translate-y-2">
           <h3 className="text-xl font-bold text-gray-800">Standard Parking</h3>
           <p className="text-4xl font-black text-yellow-500 my-4">
-            $10<span className="text-sm text-gray-400 font-medium">/hour</span>
+            ₹50<span className="text-sm text-gray-400 font-medium">/hour</span>
           </p>
           <ul className="space-y-3 text-gray-600 mb-8">
             <li className="flex items-center gap-2">
@@ -29,8 +34,10 @@ const Pricing = () => {
               <FaCheck className="text-green-500" /> 24/7 Security
             </li>
           </ul>
-          <button className="w-full bg-gray-100 py-3 rounded font-bold hover:bg-gray-200 text-gray-800">
-            Select Plan
+          <button 
+            onClick={() => handlePayment("Standard Parking")}
+            className="w-full bg-gray-100 py-3 rounded font-bold hover:bg-gray-200 text-gray-800">
+            Pay Online Now
           </button>
         </div>
 
@@ -41,7 +48,7 @@ const Pricing = () => {
           </div>
           <h3 className="text-xl font-bold">VIP Premium</h3>
           <p className="text-4xl font-black text-white my-4">
-            $25<span className="text-sm text-gray-400 font-medium">/hour</span>
+            ₹100<span className="text-sm text-gray-400 font-medium">/hour</span>
           </p>
           <ul className="space-y-3 text-gray-300 mb-8">
             <li className="flex items-center gap-2">
@@ -54,8 +61,10 @@ const Pricing = () => {
               <FaCheck className="text-yellow-400" /> EV Charging Included
             </li>
           </ul>
-          <button className="w-full bg-yellow-400 text-black py-3 rounded font-bold hover:bg-yellow-300 transition">
-            Select Plan
+          <button 
+            onClick={() => handlePayment("VIP Premium")}
+            className="w-full bg-yellow-400 text-black py-3 rounded font-bold hover:bg-yellow-300 transition">
+            Pay Online Now
           </button>
         </div>
 
@@ -63,7 +72,7 @@ const Pricing = () => {
         <div className="bg-white p-8 rounded-xl shadow-lg border border-gray-200 hover:border-yellow-400 transition transform hover:-translate-y-2">
           <h3 className="text-xl font-bold text-gray-800">Monthly Pass</h3>
           <p className="text-4xl font-black text-yellow-500 my-4">
-            $300
+            ₹3000
             <span className="text-sm text-gray-400 font-medium">/month</span>
           </p>
           <ul className="space-y-3 text-gray-600 mb-8">
@@ -74,8 +83,10 @@ const Pricing = () => {
               <FaCheck className="text-green-500" /> Reserved Spot
             </li>
           </ul>
-          <button className="w-full bg-gray-100 py-3 rounded font-bold hover:bg-gray-200 text-gray-800">
-            Select Plan
+          <button 
+            onClick={() => handlePayment("Monthly Pass")}
+            className="w-full bg-gray-100 py-3 rounded font-bold hover:bg-gray-200 text-gray-800">
+            Pay Online Now
           </button>
         </div>
       </div>
