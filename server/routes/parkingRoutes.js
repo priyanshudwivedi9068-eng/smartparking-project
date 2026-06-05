@@ -6,8 +6,10 @@ const {
   endBooking,
   searchSites,
   getHistory,
+  getSiteDetails,
 } = require("../controllers/parkingController");
 router.get("/sites", searchSites);
+router.get("/site/:siteId", getSiteDetails);
 router.get("/slots/:siteId", getSlots);
 
 router.post("/book", bookSlot);
