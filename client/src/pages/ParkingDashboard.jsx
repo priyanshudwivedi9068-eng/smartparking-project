@@ -31,6 +31,7 @@ const ParkingDashboard = () => {
       const slotRes = await axios.get(
         `${import.meta.env.VITE_API_URL}/api/parking/slots/${siteId}`,
       );
+      // console.log("slot data fetched:", slotRes.data); // debugging
       if (Array.isArray(slotRes.data)) setSlots(slotRes.data);
 
       const siteRes = await axios.get(
@@ -39,6 +40,7 @@ const ParkingDashboard = () => {
       if (siteRes.data) setSiteData(siteRes.data);
     } catch (error) {
       console.error("Error loading data", error);
+      // toast.error("failed to load parking data");
     }
   };
 
@@ -75,6 +77,7 @@ const ParkingDashboard = () => {
         setIsVip(false);
       }
     } catch (error) {
+      console.log(error); // todo: remove this in prod
       toast.error(error.response?.data?.message || "Booking Failed");
     }
     setLoading(false);
